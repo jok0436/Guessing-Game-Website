@@ -1,6 +1,3 @@
-class Controller {
-
-}
 var exerciseSelector = new Vue({
   el: '#exercise_Selector',
   data: {
