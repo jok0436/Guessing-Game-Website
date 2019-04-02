@@ -17,6 +17,7 @@ var exerciseSelector = new Vue({
     },
     changeExercise: function (WhichExercise = '1') {
       this.current = WhichExercise
+      console.log(this.current)
     }
   }
 })
@@ -26,7 +27,7 @@ var problemSetSelector = new Vue({
     current: 'None'
   },
   methods: {
-    changeProblemSet: function (whichProblem = 'None') {
+    changeProblemSet: function (whichProblem = '1') {
       this.current = whichProblem
       exerciseSelector.changeVisibility(this.current)
     }
