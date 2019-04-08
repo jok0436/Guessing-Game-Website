@@ -3,22 +3,13 @@
 
 <head>
     <title>Guessing Game</title>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Tab Icon-->
-    <link rel="shortcut icon" href="src/media/icon.ico" type="image/x-icon" />
-
-    <!-- Vue.js -->
-    <!-- development version, includes helpful console warnings -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <!--  Meta Tags -->
+    <link rel="shortcut icon" href="src/media/icon.ico" type="image/x-icon" /> <!-- Tab Icon-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> <!-- Vue.js Development -->
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/darkly/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-w+8Gqjk9Cuo6XH9HKHG5t5I1VR4YBNdPt/29vwgfZR485eoEJZ8rJRbm3TR32P6k" crossorigin="anonymous">
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
@@ -28,49 +19,36 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
+    <!-- End Bootstrap CSS -->
 </head>
 
 <body>
-    <div class="text-center">
-        <h1>[BCPR280 Software Engineering 2] Assignment 1</h1>
+    <div id="app">
+        <div class="text-center">
+            <h1>[BCPR280 Software Engineering 2] Assignment 1</h1>
+        </div>
+        <div class="btn-group" id="problem_Set_Selector" role="group" aria-label="Problem Set Selector">
+            <button v-for='problem in problems' class="btn btn-secondary"
+                v-on:click="selectedProblem(problem.id)">{{problem.id}}</button>
+        </div>
+        <div class="btn-group" id="exercise_Selector" role="group" aria-label="Exercise Selector"
+            v-if="problemSet !== 'None'">
+            <button type="button" class="btn btn-secondary" v-for='exercise in problems[problemSet-1].exercises'
+                v-on:click="selectedExercise(exercise)">{{exercise}}</button>
+        </div>
+        <br>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert" id="selectorAlert">Please Select a
+            Problem Set and
+            Exercise...<button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                id="alertDismisser"><span aria-hidden="true">&times;</span></button></div>
+        <div class="card" id="content">
+            <ul class="list-group list-group-flush"></ul>
+        </div>
+        <div class="form-group" id="input"><input type="text" class="form-control fixed-bottom"
+                placeholder="Type Inside Me (^.^)" v-on:keyup.enter="submit()"></div>
     </div>
-
-    <div class="btn-group" id="problem_Set_Selector" role="group" aria-label="Problem Set Selector">
-        <button type="button" class="btn btn-secondary" v-on:click="changeProblemSet('1')" id="problem_Set_1"> Problem
-            Set
-            1</button>
-        <button type="button" class="btn btn-secondary" v-on:Click="changeProblemSet('2')" id="problem_Set_2">Problem
-            Set
-            2</button>
-    </div>
-
-    <div class="btn-group" id="exercise_Selector" role="group" aria-label="Exercise Selector">
-        <button type="button" class="btn btn-secondary" v-on:click="changeExercise('1')" disabled>1</button>
-        <button type="button" class="btn btn-secondary" v-on:click="changeExercise('2')" disabled>2</button>
-        <button type="button" class="btn btn-secondary" v-on:click="changeExercise('3')" disabled>3</button>
-        <button type="button" class="btn btn-secondary" v-on:click="changeExercise('4')" disabled>4</button>
-        <button type="button" class="btn btn-secondary" v-on:click="changeExercise('5')" disabled>5</button>
-    </div>
-
-    <br>
-
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        Please Select a Problem Set and Exercise...
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-
-    <div class="card" id="content">
-        <ul class="list-group list-group-flush">
-        </ul>
-    </div>
-
-    <div class="form-group" id="input">
-        <input type="text" class="form-control fixed-bottom" placeholder="Type Inside Me (^.^)"
-            v-on:keyup.enter="submit">
-    </div>
-    <script src="src/js/controller.js"></script>
+    <script src="src/js/controller/InputHandler.js"></script>
+    <script src="src/js/view/vm.js"></script>
 </body>
 
 </html>
