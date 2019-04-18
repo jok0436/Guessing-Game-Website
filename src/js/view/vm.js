@@ -9,12 +9,12 @@ var vm = new Vue({
       exercises: [1, 2, 3, 4]
     }],
     problemSet: 'None',
-    exercise: 'None'
+    exercise: 'None',
+    inputHandler: new InputHandler()
   },
   methods: {
     submit: function () {
-      InputHandler.outputFromInputBox()
-      this.output('What?')
+      this.inputHandler.outputFromInputBox()
     },
     setProblem: function (newProblem = 'None') {
       if (this.checkProblem(newProblem)) {
@@ -57,12 +57,13 @@ var vm = new Vue({
       $('#alertDismisser').click()
     },
     output: function (data = 'None') {
-      InputHandler.output(data)
+      this.inputHandler.output(data)
     },
     selectedExercise: function (newExercise = 'None') {
       this.setExercise(newExercise)
       this.output(`You have selected Problem Set: ${this.problemSet} Exercise: ${this.exercise}`)
       this.hideAlert()
+      this.inputHandler.execute(this.problemSet, this.exercise)
     },
     selectedProblem: function (newProblem = 'None') {
       this.setProblem(newProblem)
