@@ -1,27 +1,13 @@
 /*
 Author:
-Josiah Kerr | 15 April 2019
+Josiah Kerr | 15 April 2019 | Last Updated 19 April 2019
 Problem:
 Write a program to play a number guessing game. The program shall generate a random number
 between 0 and 99. The USER inputs his/her guess, and the program shall response with "Try
 higher", "Try lower" or "You got it in n trials" if the guess is correct.
-
-Problem Set 2 Question 1 Algorithm:
-Set variable secretNumber to random value between 0-99
-Set variable guesses to 0
-When user inputs guess
-	Guesses++
-	If guess is higher than secretNumber
-		Return ‘Try lower’
-	Else if guess is lower than secretNumber
-		Return ‘Try higher’
-	Else if guess equals secretNumber
-		Return ‘You got it in ‘ + guesses + ‘ trials’
-	Else
-		Return ‘Something went wrong!’
 */
-
-class S2E1 extends Exercise {
+import { Exercise } from '../model/Exercise'
+export class S2E1 extends Exercise {
   constructor () {
     super()
     this.secretNumber = Math.round((Math.random() * 100)) - 1

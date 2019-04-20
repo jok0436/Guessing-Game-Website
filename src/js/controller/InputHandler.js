@@ -1,23 +1,38 @@
 class InputHandler {
-  constructor () {
+  constructor (newMessageLimit = 7) {
     this.current = new Exercise()
+    this.messageLimit = newMessageLimit
+    this.messageCount = 0
   }
   outputFromInputBox (data) {
     var inputDiv = document.getElementById('input')
     var input = inputDiv.getElementsByClassName('form-control fixed-bottom').item(0)
     this.output(input.value)
-    this.current.input(input.value)
-    this.output(this.current.output())
+    if (input.value !== 'clear') {
+      this.current.input(input.value)
+      this.output(this.current.output())
+    }
     input.value = ''
   }
   output (data = 'Oops! Something bad happened...') {
     var node = document.createElement('LI')
-    node.classList.add('list-group-item')
     var textnode = document.createTextNode(data)
-    node.appendChild(textnode)
-    var content = document.getElementById('content')
-    var elements = content.getElementsByClassName('list-group list-group-flush')
-    elements.item(0).appendChild(node)
+    var cards = document.getElementById('cards')
+    if (this.messageCount > this.messageLimit) {
+      cards.removeChild(cards.firstElementChild)
+      this.messageCount--
+    }
+    if (data === 'clear') {
+      while (cards.firstChild) {
+        cards.removeChild(cards.firstChild)
+      }
+      this.messageCount = 0
+    } else {
+      node.classList.add('list-group-item')
+      node.appendChild(textnode)
+      cards.appendChild(node)
+      this.messageCount++
+    }
   }
 
   execute (problemSet = 2, exercise = 1) {

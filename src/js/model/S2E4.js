@@ -1,6 +1,6 @@
 /*
 Author:
-Josiah Kerr | 10 April 2019
+Josiah Kerr | 10 April 2019 | Last Updated 19 April 2019
 Problem:
 Write a program to play a number guessing game. The USER mentally selects a number between
 0 and 99 and the computer ties to guess it. The computer outputs its guess, and the User response
@@ -9,7 +9,8 @@ with "COLD" if the guess is more than 40 from the target number, "COOL" if the g
 the guess is within 1-9 of the target number or “correct”. The computer should keep count of the
 number of guesses. The computer should complain if the USER has lied.
 */
-class S2E4 extends Exercise {
+import Exercise from '../model/Exercise'
+export class S2E4 extends Exercise {
   constructor (newRangeLow = 0, newRangeHigh = 99) {
     super()
     this.rangeLow = newRangeLow
@@ -54,7 +55,10 @@ class S2E4 extends Exercise {
     'or correct... enter "Start" now and ill start guessing'
   }
   bindLowHigh (givenRangeLow, givenRangeHigh) {
+    var forwardsRange = this.generateArray(Math.min(this.rangeHigh + 1, this.currentGuess + givenRangeLow), Math.min(this.rangeHigh + 1, this.currentGuess + givenRangeHigh))
+    var backwardsRange = this.generateArray(Math.max(this.rangeLow - 1, this.currentGuess - givenRangeHigh), Math.max(this.rangeLow - 1, this.currentGuess - givenRangeLow))
     this.validNumbers = this.validNumbers.filter(xNumber => xNumber !== this.currentGuess)
+    this.validNumbers = this.validNumbers.filter(xNumber => (forwardsRange.includes(xNumber) || backwardsRange.includes(xNumber)))
     this.generateInvalidNumbers()
     this.sortValidInvalid()
   }

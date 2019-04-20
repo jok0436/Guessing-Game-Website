@@ -1,34 +1,14 @@
 /*
 Author:
-Josiah Kerr | 15 April 2019
+Josiah Kerr | 15 April 2019 | Last Updated 19 April 2019
 Problem:
 Write a program to play a number guessing game. The USER mentally selects a number between
 0 and 99 and the computer ties to guess it. The computer outputs its guess, and the User response
 with "Try higher", "Try lower" or “correct”. The computer should keep count of the number of
 guesses. The computer should complain if the USER has lied.
-
-Problem Set 2 Question 3 Algorithm:
-Set variable validNumbers to integer array of all numbers between 0-99
-Set variable guesses to 0
-Set variable currentGuess to 50
-Set variable hasWon to false
-
-While hasWon is not true
-	Print ‘currentGuess’
-	Await user response()
-	Switch ‘response’
-		‘Try higher’
-			Take from validNumbers all values that were lower than currentGuess
-		‘Try lower’
-			Take from validNumbers all values that were higher than currentGuess
-		‘correct’
-			hasWon set to true
-	if validNumbers length equals 0
-		print ‘You Lied!’
-print ‘You got it in ‘ + guesses + ‘ trials’
 */
-
-class S2E3 extends Exercise {
+import { Exercise } from '../model/Exercise'
+export class S2E3 extends Exercise {
   constructor () {
     super()
     this.validNumbers = this.generateArray(0, 99)

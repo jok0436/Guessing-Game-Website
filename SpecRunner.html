@@ -26,26 +26,26 @@
   <div id="app" style="display: none;">
     <div class="text-center">
       <h1>[BCPR280 Software Engineering 2] Assignment 1</h1>
-    </div>
-    <div class="btn-group" id="problem_Set_Selector" role="group" aria-label="Problem Set Selector">
+  </div>
+  <div class="btn-group" id="problem_Set_Selector" role="group" aria-label="Problem Set Selector">
       <button v-for='problem in problems' class="btn btn-secondary"
-        v-on:click="selectedProblem(problem.id)">{{problem.id}}</button>
-    </div>
-    <div class="btn-group" id="exercise_Selector" role="group" aria-label="Exercise Selector"
+          v-on:click="selectedProblem(problem.id)">{{problem.id}}</button>
+  </div>
+  <div class="btn-group" id="exercise_Selector" role="group" aria-label="Exercise Selector"
       v-if="problemSet !== 'None'">
       <button type="button" class="btn btn-secondary" v-for='exercise in problems[problemSet-1].exercises'
-        v-on:click="selectedExercise(exercise)">{{exercise}}</button>
-    </div>
-    <br>
-    <div class="alert alert-warning alert-dismissible fade show" role="alert" id="selectorAlert">Please Select a
+          v-on:click="selectedExercise(exercise)">{{exercise}}</button>
+  </div>
+  <br>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert" id="selectorAlert">Please Select a
       Problem Set and
-      Exercise...<button type="button" class="close" data-dismiss="alert" aria-label="Close" id="alertDismisser"><span
-          aria-hidden="true">&times;</span></button></div>
-    <div class="card" id="content">
-      <ul class="list-group list-group-flush"></ul>
-    </div>
-    <div class="form-group" id="input"><input type="text" class="form-control fixed-bottom"
-        placeholder="Type Inside Me (^.^)" v-on:keyup.enter="submit()"></div>
+      Exercise...<button type="button" class="close" data-dismiss="alert" aria-label="Close"
+          id="alertDismisser"><span aria-hidden="true">&times;</span></button></div>
+  <div class="card" id="content">
+      <ul class="list-group list-group-flush" id="cards"></ul>
+  </div>
+  <div class="form-group" id="input"><input type="text" class="form-control fixed-bottom"
+          placeholder="Type Inside Me (^.^)" v-on:keyup.enter="submit()"></div>
   </div>
 
   <!-- include source files here... -->
