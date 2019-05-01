@@ -8,8 +8,7 @@ if the guess is more than 40 from the target number, "COOL" if the guess is with
 target number, “WARM” if the guess is within 10-19 of the target number, “HOT” if the guess is
 within 1-9 of the target number or "You got it in n trials" if the guess is correct.
 */
-import { Exercise } from '../model/Exercise'
-export class S2E2 extends Exercise {
+class S2E2 extends Exercise {
   constructor () {
     super()
     this.secretNumber = Math.round((Math.random() * 100)) - 1

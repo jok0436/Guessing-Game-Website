@@ -9,8 +9,7 @@ with "COLD" if the guess is more than 40 from the target number, "COOL" if the g
 the guess is within 1-9 of the target number or “correct”. The computer should keep count of the
 number of guesses. The computer should complain if the USER has lied.
 */
-import Exercise from '../model/Exercise'
-export class S2E4 extends Exercise {
+class S2E4 extends Exercise {
   constructor (newRangeLow = 0, newRangeHigh = 99) {
     super()
     this.rangeLow = newRangeLow

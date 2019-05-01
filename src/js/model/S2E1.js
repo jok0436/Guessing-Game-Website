@@ -6,8 +6,7 @@ Write a program to play a number guessing game. The program shall generate a ran
 between 0 and 99. The USER inputs his/her guess, and the program shall response with "Try
 higher", "Try lower" or "You got it in n trials" if the guess is correct.
 */
-import { Exercise } from '../model/Exercise'
-export class S2E1 extends Exercise {
+class S2E1 extends Exercise {
   constructor () {
     super()
     this.secretNumber = Math.round((Math.random() * 100)) - 1

@@ -7,8 +7,7 @@ Write a program to play a number guessing game. The USER mentally selects a numb
 with "Try higher", "Try lower" or “correct”. The computer should keep count of the number of
 guesses. The computer should complain if the USER has lied.
 */
-import { Exercise } from '../model/Exercise'
-export class S2E3 extends Exercise {
+class S2E3 extends Exercise {
   constructor () {
     super()
     this.validNumbers = this.generateArray(0, 99)
